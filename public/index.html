@@ -1,23 +1,45 @@
-<form id="loginForm">
-    <input type="text" id="contractorId" placeholder="Enter Contractor ID" required>
-    <button type="submit">Login</button>
-</form>
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>RA Digital Finance</h1>
+    <h2>Support Our Educational Mission</h2>
+    <p>Please register your pledge below to track your contribution toward our educational programs.</p>
+    
+    <form id="pledgeForm">
+        <input type="text" id="pName" placeholder="Your Name" required>
+        <input type="number" id="pAmount" placeholder="Amount ($)" required>
+        <button type="submit">Register Pledge</button>
+    </form>
 
-<script>
-    document.getElementById('loginForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const contractorId = document.getElementById('contractorId').value;
+    <div id="instructions" style="display:none; margin-top: 20px; padding: 15px; border: 1px solid #ccc;">
+        <h3>Pledge Registered.</h3>
+        <p>Please mail your check or money order to:</p>
+        <address>
+            <strong>[INSERT YOUR NAME/BUSINESS NAME]</strong><br>
+            [INSERT STREET ADDRESS OR P.O. BOX]<br>
+            [INSERT CITY, STATE, ZIP CODE]<br>
+        </address>
+        <p><em>Thank you for directly supporting our educational efforts.</em></p>
+    </div>
 
-        const response = await fetch('/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ contractorId })
-        });
-
-        if (response.ok) {
-            alert("Access Granted");
-        } else {
-            alert("Access Denied");
-        }
-    });
-</script>
+    <script>
+        document.getElementById('pledgeForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const data = {
+                name: document.getElementById('pName').value,
+                amount: document.getElementById('pAmount').value,
+                date: new Date().toLocaleDateString()
+            };
+            
+            await fetch('/log-pledge', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            });
+            
+            document.getElementById('pledgeForm').style.display = 'none';
+            document.getElementById('instructions').style.display = 'block';
+        };
+    </script>
+</body>
+</html>
