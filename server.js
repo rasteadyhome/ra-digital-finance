@@ -1,15 +1,18 @@
-// This is your "Database" - a simple list you control directly in your code
-const authorizedContractors = ['12345', '67890', 'ABCDE']; 
+const express = require('express');
+const fs = require('fs');
+const app = express();
+app.use(express.json());
+app.use(express.static('public'));
 
-app.use(express.json()); // Ensure your app can read JSON data
-
-app.post('/login', (req, res) => {
-    const { contractorId } = req.body;
+app.post('/log-pledge', (req, res) => {
+    const { name, amount, date } = req.body;
+    const logEntry = `${date} | PLEDGE: $${amount} | From: ${name}\n`;
     
-    // Check if the ID entered by the user exists in your list
-    if (authorizedContractors.includes(contractorId)) {
-        res.send("Access Granted");
-    } else {
-        res.status(401).send("Access Denied");
-    }
+    // This creates/updates the text file in your folder
+    fs.appendFile('pledge_ledger.txt', logEntry, (err) => {
+        if (err) return res.status(500).send("Error");
+        res.status(200).send("Logged");
+    });
 });
+
+app.listen(process.env.PORT || 3000);
