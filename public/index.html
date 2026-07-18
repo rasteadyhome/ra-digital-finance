@@ -6,12 +6,11 @@
     <title>RA Digital Finance / RA Steady Home</title>
     <style>
         /* ========================================== */
-        /* DROPDOWN CSS STYLES            */
+        /* DROPDOWN CSS STYLES                        */
         /* ========================================== */
         .dropdown {
             position: relative;
             display: inline-block;
-            margin: 0 15px;
         }
         .dropdown-content {
             display: none;
@@ -44,30 +43,134 @@
         .dropdown:hover .dropdown-content {
             display: block;
         }
+
+        /* ========================================== */
+        /* MOBILE NAVIGATION STYLES                   */
+        /* ========================================== */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 35px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #edf2f7;
+            position: relative;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px; /* Replaces the old margin: 0 15px */
+        }
+
+        /* Base styles for the links */
+        .nav-link {
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        
+        .nav-link.home {
+            color: #1a365d;
+        }
+        
+        .nav-link.standard {
+            color: #2b6cb0;
+        }
+        
+        .nav-link.outlined {
+            color: #2b6cb0;
+            border: 1px dashed #2b6cb0;
+            padding: 6px 12px;
+            border-radius: 4px;
+        }
+
+        /* Hide Hamburger on Desktop */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        /* Design the 3 lines for the hamburger */
+        .hamburger .line {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: #2b6cb0;
+            border-radius: 2px;
+        }
+
+        /* Mobile Styles (Screens under 768px) */
+        @media (max-width: 768px) {
+            .navbar {
+                justify-content: flex-end; /* Pushes hamburger to the right */
+                padding-right: 15px;
+            }
+
+            .hamburger {
+                display: block; /* Show the hamburger button */
+            }
+
+            .nav-links {
+                display: none; /* Hide standard menu */
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%; /* Drops it right below the navbar */
+                left: 0;
+                background-color: #fcfdfd;
+                text-align: center;
+                padding: 20px 0;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.05);
+                z-index: 10;
+            }
+
+            .nav-links.active {
+                display: flex; /* Shown when toggled by JS */
+            }
+
+            .dropdown {
+                margin: 10px 0;
+            }
+        }
     </style>
 </head>
 <body style="font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; color: #2d3748; background-color: #fcfdfd;">
 
-    <nav style="text-align: center; margin-bottom: 35px; padding-bottom: 15px; border-bottom: 1px solid #edf2f7;">
-        <a href="index.html" style="color: #1a365d; font-weight: bold; text-decoration: none; margin: 0 15px; font-size: 16px;">Home</a>
-        <a href="employer.html" style="color: #2b6cb0; font-weight: bold; text-decoration: none; margin: 0 15px; font-size: 16px;">Hire Local (Post Jobs)</a>
-        
-        <div class="dropdown">
-            <a href="javascript:void(0)" style="color: #2b6cb0; font-weight: bold; text-decoration: none; font-size: 16px;">Appliances ▾</a>
-            <div class="dropdown-content">
-                <a href="marketplace.html">Buy (New & Used)</a>
-                <a href="rent-to-own.html">Rent-to-Own</a>
-            </div>
-        </div>
+    <nav class="navbar">
+        <!-- Hamburger Icon -->
+        <button class="hamburger" id="hamburger">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
 
-        <a href="stories.html" style="color: #2b6cb0; font-weight: bold; text-decoration: none; margin: 0 15px; font-size: 16px; border: 1px dashed #2b6cb0; padding: 6px 12px; border-radius: 4px;">Story Marketplace - TKT</a>
-        <a href="life-disfigurations.html" style="color: #2b6cb0; font-weight: bold; text-decoration: none; margin: 0 15px; font-size: 16px; border: 1px dashed #2b6cb0; padding: 6px 12px; border-radius: 4px;">Story Marketplace - L-Dis</a>
+        <!-- Navigation Links -->
+        <div class="nav-links" id="nav-links">
+            <a href="index.html" class="nav-link home">Home</a>
+            <a href="employer.html" class="nav-link standard">Hire Local (Post Jobs)</a>
+            
+            <div class="dropdown">
+                <a href="javascript:void(0)" class="nav-link standard">Appliances ▾</a>
+                <div class="dropdown-content">
+                    <a href="marketplace.html">Buy (New & Used)</a>
+                    <a href="rent-to-own.html">Rent-to-Own</a>
+                </div>
+            </div>
+
+            <a href="stories.html" class="nav-link outlined">Story Marketplace - TKT</a>
+            <a href="life-disfigurations.html" class="nav-link outlined">Story Marketplace - L-Dis</a>
+        </div>
     </nav>
 
     <div style="text-align: center; margin-bottom: 40px;">
         <a href="https://www.zeffy.com/en-US/peer-to-peer/employment-preparation-and-community-education" 
            style="background-color: #2b6cb0; color: #ffffff; padding: 15px 30px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 18px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-            Donate to Our Mission
+             Donate to Our Mission
         </a>
     </div>
 
@@ -203,5 +306,14 @@
         <p style="margin-top: 25px; color: #a0aec0; font-size: 12px;">&copy; 2026 RA Steady Home LLC. All rights reserved.</p>
     </footer>
 
+    <!-- JavaScript for Mobile Hamburger Menu -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
