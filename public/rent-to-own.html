@@ -14,149 +14,94 @@
     <title>Rent-to-Own | RA Digital Finance</title>
     <style>
         /* ========================================== */
-        /* DROPDOWN CSS STYLES                        */
+        /* CSS STYLES                                 */
         /* ========================================== */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-            margin: 0 15px;
-        }
+        .dropdown { position: relative; display: inline-block; }
         .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #ffffff;
-            min-width: 180px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-            z-index: 1;
-            border-radius: 6px;
-            border: 1px solid #edf2f7;
-            text-align: left;
-            margin-top: 10px;
+            display: none; position: absolute; background-color: #ffffff;
+            min-width: 180px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+            z-index: 1; border-radius: 6px; border: 1px solid #edf2f7;
+            text-align: left; margin-top: 10px;
         }
         .dropdown-content a {
-            color: #2b6cb0;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            font-weight: bold;
-            font-size: 15px;
-            border-bottom: 1px solid #edf2f7;
+            color: #2b6cb0; padding: 12px 16px; text-decoration: none;
+            display: block; font-weight: bold; font-size: 15px; border-bottom: 1px solid #edf2f7;
         }
-        .dropdown-content a:last-child {
-            border-bottom: none;
+        .dropdown:hover .dropdown-content { display: block; }
+
+        .navbar {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 35px; padding-bottom: 15px; border-bottom: 1px solid #edf2f7;
         }
-        .dropdown-content a:hover {
-            background-color: #f7fafc;
-            border-radius: 6px;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        
-        /* Product Card Styling */
-        .product-card {
-            background-color: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        .nav-links { display: flex; align-items: center; gap: 20px; }
+        .nav-link { font-weight: bold; text-decoration: none; font-size: 16px; color: #2b6cb0; }
+        .nav-link.home { color: #1a365d; }
+
+        .hamburger { display: none; cursor: pointer; background: none; border: none; padding: 5px; }
+        .hamburger .line { display: block; width: 25px; height: 3px; margin: 5px auto; background-color: #2b6cb0; border-radius: 2px; }
+
+        .product-card { background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 25px; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-links {
+                display: none; flex-direction: column; width: 100%;
+                position: absolute; top: 70px; left: 0; background-color: #fcfdfd;
+                padding: 20px 0; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.05); z-index: 10;
+            }
+            .nav-links.active { display: flex; }
         }
     </style>
 </head>
 <body style="font-family: Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; color: #2d3748; background-color: #fcfdfd;">
 
-    <nav style="text-align: center; margin-bottom: 35px; padding-bottom: 15px; border-bottom: 1px solid #edf2f7;">
-        <a href="index.html" style="color: #1a365d; font-weight: bold; text-decoration: none; margin: 0 15px; font-size: 16px;">Home</a>
-        <a href="employer.html" style="color: #2b6cb0; font-weight: bold; text-decoration: none; margin: 0 15px; font-size: 16px;">Hire Local (Post Jobs)</a>
-        
-        <div class="dropdown">
-            <a href="javascript:void(0)" style="color: #2b6cb0; font-weight: bold; text-decoration: none; font-size: 16px;">Appliances ▾</a>
-            <div class="dropdown-content">
-                <a href="marketplace.html">Buy (New & Used)</a>
-                <a href="rent-to-own.html">Rent-to-Own</a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div style="font-weight: bold; font-size: 18px; color: #1a365d;">RA Digital Finance</div>
+        <button class="hamburger" id="hamburger"><span class="line"></span><span class="line"></span><span class="line"></span></button>
+        <div class="nav-links" id="nav-links">
+            <a href="index.html" class="nav-link home">Home</a>
+            <a href="employer.html" class="nav-link">Hire Local</a>
+            <div class="dropdown">
+                <a href="javascript:void(0)" class="nav-link">Appliances ▾</a>
+                <div class="dropdown-content">
+                    <a href="marketplace.html">Buy</a>
+                    <a href="rent-to-own.html">Rent-to-Own</a>
+                </div>
             </div>
         </div>
-
-        <a href="stories.html" style="color: #2b6cb0; font-weight: bold; text-decoration: none; margin: 0 15px; font-size: 16px; border: 1px dashed #2b6cb0; padding: 6px 12px; border-radius: 4px;">Story Marketplace - TKT</a>
-        <a href="life-disfigurations.html" style="color: #2b6cb0; font-weight: bold; text-decoration: none; margin: 0 15px; font-size: 16px; border: 1px dashed #2b6cb0; padding: 6px 12px; border-radius: 4px;">Story Marketplace - L-Dis</a>
     </nav>
 
     <main>
         <section style="margin-bottom: 40px; background-color: #1a365d; color: #ffffff; padding: 30px; border-radius: 8px; text-align: center;">
             <h1 style="margin-top: 0; font-size: 28px;">Rent-to-Own Appliances</h1>
-            <p style="font-size: 18px; margin-bottom: 0; color: #ebf8ff;">
-                Affordable household stability. Support our mission while meeting your goals.
-            </p>
+            <p style="font-size: 18px; margin-bottom: 0; color: #ebf8ff;">Affordable household stability. Support our mission while meeting your goals.</p>
         </section>
 
-        <!-- New Rental Item: Washing Machine -->
+        <!-- Product Section -->
         <section style="margin-bottom: 45px; text-align: center;">
             <div class="product-card" style="max-width: 400px; margin: 0 auto;">
-                <div style="background-color: #f7fafc; padding: 20px; border-radius: 6px; margin-bottom: 20px; border: 1px solid #edf2f7;">
-                    <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQUabiDOu5uYs5iAKTlx1Hd506UNb-X_rzPWEvM_2M59M4xV8kGmHjj6S8_Quq9exTXlHSJsXD68rVke0Q" alt="White Top Load Washing Machine" style="max-width: 100%; height: auto; border-radius: 4px;">
-                </div>
-                <h3 style="color: #1a365d; margin-top: 0; margin-bottom: 10px; font-size: 20px;">Standard Washing Machine</h3>
-                <p style="color: #4a5568; font-size: 15px; margin-bottom: 25px; line-height: 1.5;">
-                    Reliable, fully inspected washing machine. Available through our rent-to-own program.
-                </p>
-                <a href="https://square.link/u/DPCEpGcZ" target="_blank" rel="noopener noreferrer" 
-                   style="background-color: #2b6cb0; color: #ffffff; padding: 14px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 16px; display: block; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-                    Rent Now
-                </a>
+                <h3 style="color: #1a365d; margin-top: 0; font-size: 20px;">Standard Washing Machine</h3>
+                <p style="color: #4a5568; font-size: 15px; margin-bottom: 25px;">Reliable, fully inspected unit.</p>
+                <a href="https://square.link/u/DPCEpGcZ" target="_blank" style="background-color: #2b6cb0; color: #ffffff; padding: 14px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; display: block;">Rent Now</a>
             </div>
         </section>
 
         <section style="margin-bottom: 45px;">
             <div class="product-card">
-                <h2 style="color: #2b6cb0; margin-top: 0; font-size: 24px; border-bottom: 2px solid #edf2f7; padding-bottom: 10px;">
-                    Quality Used Washers & Dryers
-                </h2>
-                
-                <div style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 20px;">
-                    <div style="flex: 1; min-width: 300px; padding-right: 20px;">
-                        <ul style="list-style-type: none; padding: 0; font-size: 18px; line-height: 1.8;">
-                            <li>✅ <strong>Monthly Rate:</strong> As low as <span style="color: #276749; font-weight: bold; font-size: 22px;">$15.00 / month</span></li>
-                            <li>✅ <strong>Standard Deposit:</strong> $10.00</li>
-                        </ul>
-                        
-                        <div style="background-color: #ebf8ff; border-left: 4px solid #3182ce; padding: 15px; margin-top: 20px; border-radius: 4px;">
-                            <h4 style="margin: 0 0 5px 0; color: #2c5282;">📚 Educational Program Benefit</h4>
-                            <p style="margin: 0; font-size: 15px; color: #4a5568;">
-                                Join our community education program to lock in your initial deposit at just <strong>$10.00</strong> and gain access to vital resources.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div style="flex: 1; min-width: 250px; background-color: #f7fafc; padding: 25px; border-radius: 8px; border: 1px solid #cbd5e0; text-align: center; margin-top: 15px;">
-                        <h3 style="margin-top: 0; color: #1a365d;">Ready to start?</h3>
-                        <p style="font-size: 15px; color: #4a5568; margin-bottom: 20px;">
-                            Contact operations today to check our current inventory of washers and dryers and set up your rental agreement.
-                        </p>
-                        <a href="tel:8064458142" style="background-color: #2b6cb0; color: #ffffff; padding: 12px 20px; text-decoration: none; border-radius: 6px; font-weight: bold; display: block; margin-bottom: 10px;">
-                            Call: 806-445-8142
-                        </a>
-                        <a href="sms:4058700835" style="background-color: #ffffff; color: #2b6cb0; border: 2px solid #2b6cb0; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: bold; display: block;">
-                            Text: 405-870-0835
-                        </a>
-                    </div>
-                </div>
+                <h2 style="color: #2b6cb0; font-size: 24px; border-bottom: 2px solid #edf2f7; padding-bottom: 10px;">Program Details</h2>
+                <ul style="list-style-type: none; padding: 0; font-size: 18px; line-height: 2;">
+                    <li>✅ <strong>Monthly Rate:</strong> $15.00 / month</li>
+                    <li>✅ <strong>Standard Deposit:</strong> $10.00</li>
+                </ul>
             </div>
         </section>
     </main>
 
-    <footer style="margin-top: 60px; border-top: 1px solid #e2e8f0; padding-top: 20px; text-align: center;">
-        <div style="background-color: #f7fafc; padding: 20px; border-radius: 8px; max-width: 500px; margin: 0 auto;">
-            <p style="margin-bottom: 5px; font-weight: bold; color: #2d3748;">Prefer to support via mail?</p>
-            <p style="margin-top: 0; color: #718096; font-size: 14px;">Please make checks or money orders payable to:</p>
-            <address style="font-style: normal; line-height: 1.6; color: #2d3748; font-size: 15px;">
-                <strong>RA Digital Finance</strong><br>
-                1617 Ruby Dr.<br>
-                El Reno, OK 73036<br>
-            </address>
-        </div>
-        <p style="margin-top: 25px; color: #a0aec0; font-size: 12px;">&copy; 2026 RA Digital Finance. All rights reserved.</p>
-    </footer>
-
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        hamburger.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+    </script>
 </body>
 </html>
