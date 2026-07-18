@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- App Manifest & Mobile Scaling -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="RA Digital">
+    <meta name="theme-color" content="#1a365d">
+
     <title>RA Digital Finance / RA Steady Home</title>
     <style>
         /* ========================================== */
@@ -60,7 +68,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 25px; /* Replaces the old margin: 0 15px */
+            gap: 25px;
         }
 
         /* Base styles for the links */
@@ -107,20 +115,20 @@
         /* Mobile Styles (Screens under 768px) */
         @media (max-width: 768px) {
             .navbar {
-                justify-content: flex-end; /* Pushes hamburger to the right */
+                justify-content: flex-end;
                 padding-right: 15px;
             }
 
             .hamburger {
-                display: block; /* Show the hamburger button */
+                display: block;
             }
 
             .nav-links {
-                display: none; /* Hide standard menu */
+                display: none;
                 flex-direction: column;
                 width: 100%;
                 position: absolute;
-                top: 100%; /* Drops it right below the navbar */
+                top: 100%;
                 left: 0;
                 background-color: #fcfdfd;
                 text-align: center;
@@ -130,7 +138,7 @@
             }
 
             .nav-links.active {
-                display: flex; /* Shown when toggled by JS */
+                display: flex;
             }
 
             .dropdown {
@@ -170,7 +178,7 @@
     <div style="text-align: center; margin-bottom: 40px;">
         <a href="https://www.zeffy.com/en-US/peer-to-peer/employment-preparation-and-community-education" 
            style="background-color: #2b6cb0; color: #ffffff; padding: 15px 30px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 18px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-             Donate to Our Mission
+              Donate to Our Mission
         </a>
     </div>
 
